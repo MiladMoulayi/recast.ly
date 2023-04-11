@@ -1,12 +1,12 @@
-import exampleVideoData from "../data/exampleVideoData.js"
+// import exampleVideoData from "../data/exampleVideoData.js"
 import VideoListEntry from "./VideoListEntry.js"
-import App from "./App.js"
-import handleClick from "./App.js"
+// import App from "./App.js"
+// import handleClick from "./App.js"
 
 var VideoList = (props) => (
   <div className="video-list">
     {props.videos.map((video) =>
-      <VideoListEntry video={video} key={video.id.videoId}/>
+      <VideoListEntry video={video} setVideo={props.setVideo} key={video.id.videoId}/>
     )}
   </div>
 );

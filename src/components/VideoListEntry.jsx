@@ -1,18 +1,22 @@
-import exampleVideoData from "../data/exampleVideoData.js"
-import App from "./App.js"
-import handleClick from "./App.js"
+var VideoListEntry = (props) => {
 
-var VideoListEntry = (props) => (
-  <div className="video-list-entry media">
-    <div className="media-left media-middle">
-      <img key={props.video.snippet.thumbnails.default.url} className="media-object" src={props.video.snippet.thumbnails.default.url} alt="" />
+  const handleClick = (e) => {
+    console.log('clicked');
+    props.setVideo(props.video);
+  };
+
+  return (
+    <div className="video-list-entry media">
+      <div className="media-left media-middle">
+        <img key={props.video.snippet.thumbnails.default.url} className="media-object" src={props.video.snippet.thumbnails.default.url} alt="" />
+      </div>
+      <div className="media-body">
+        <div className={`video-list-entry-title ${props.video.id.videoId}`}  key={props.video.id.videoId} onClick={handleClick}>{props.video.snippet.title}</div>
+        <div className="video-list-entry-detail">{props.video.snippet.description}</div>
+      </div>
     </div>
-    <div className="media-body">
-      <div className="video-list-entry-title" onClick={handleClick}>{props.video.snippet.title}</div>
-      <div className="video-list-entry-detail">{props.video.snippet.description}</div>
-    </div>
-  </div>
-);
+  );
+};
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
