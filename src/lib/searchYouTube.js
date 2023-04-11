@@ -13,8 +13,9 @@ var searchYouTube = (q, callback) => {
     url: 'https://app-hrsei-api.herokuapp.com/api/recastly/videos',
     type: 'GET',
     data: {q},
-    dataFilter: Array.slice(0, 5),
-    contentType: 'string',
+    dataFilter: function (data) {
+      return JSON.stringify(JSON.parse(data).slice(0, 5));
+    },
     success: callback
   });
 };
