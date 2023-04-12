@@ -1,8 +1,7 @@
-var VideoListEntry = ({video, setSelectedVideo}) => {
+var VideoListEntry = ({video, setVideo}) => {
 
   const handleClick = (e) => {
-    console.log('clicked');
-    setSelectedVideo({video});
+    setVideo(video);
   };
 
   return (

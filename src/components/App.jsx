@@ -9,7 +9,7 @@ const { useState } = React;
 var App = () => {
 
   const [videos, setVideos] = useState([]);
-  const [selectedVideo, setSelectedVideo] = useState(exampleVideoData[0]);
+  const [video, setVideo] = useState(exampleVideoData[0]);
   let timeout = null;
 
   const searchHandler = (e) => {
@@ -31,10 +31,10 @@ var App = () => {
       </nav>
       <div className="row">
         <div className="col-md-7">
-          <VideoPlayer video={selectedVideo} />
+          <VideoPlayer video={video} />
         </div>
         <div className="col-md-5">
-          <VideoList videos={videos} setSelectedVideo={setSelectedVideo}/>
+          <VideoList videos={videos} setVideo={setVideo}/>
         </div>
       </div>
     </div>

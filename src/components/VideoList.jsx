@@ -1,12 +1,9 @@
-// import exampleVideoData from "../data/exampleVideoData.js"
 import VideoListEntry from "./VideoListEntry.js"
-// import App from "./App.js"
-// import handleClick from "./App.js"
 
-var VideoList = ({videos, setSelectedVideo}) => (
+var VideoList = ({videos, setVideo}) => (
   <div className="video-list">
     {videos.map((video) =>
-      <VideoListEntry video={video} setSelectedVideo={(v) => setSelectedVideo(v)} key={video.id.videoId}/>
+      <VideoListEntry video={video} setVideo={(v) => setVideo(v)} key={video.id.videoId}/>
     )}
   </div>
 );
