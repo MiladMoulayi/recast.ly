@@ -1,26 +1,40 @@
 import exampleVideoData from "../data/exampleVideoData.js"
 import VideoList from "./VideoList.js"
 import VideoPlayer from "./VideoPlayer.js"
+import Search from "./Search.js"
+import searchYouTube from "../lib/searchYouTube.js"
 
 const { useState } = React;
 
 var App = () => {
-  const [video, setVideo] = useState(exampleVideoData[0]);
-  const [videos, setVideos] = useState(exampleVideoData);
+
+  const [videos, setVideos] = useState([]);
+  const [selectedVideo, setSelectedVideo] = useState(exampleVideoData[0]);
+  let timeout = null;
+
+  const searchHandler = (e) => {
+    let query = e.target.value;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      searchYouTube(query, (videos => {setVideos(videos)
+      }))
+    }, 500)
+  }
+
 
   return (
     <div>
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
-          <div><h5><em>search</em> view goes here</h5></div>
+          <Search searchHandler={(e) => searchHandler(e)}/>
         </div>
       </nav>
       <div className="row">
         <div className="col-md-7">
-         <div><h5><em>videoPlayer</em> <VideoPlayer video={video} /></h5></div>
+          <VideoPlayer video={selectedVideo} />
         </div>
         <div className="col-md-5">
-          <div><h5><em>videoList</em><VideoList videos={videos} setVideo={setVideo}/></h5></div>
+          <VideoList videos={videos} setSelectedVideo={setSelectedVideo}/>
         </div>
       </div>
     </div>

@@ -3,10 +3,10 @@ import VideoListEntry from "./VideoListEntry.js"
 // import App from "./App.js"
 // import handleClick from "./App.js"
 
-var VideoList = (props) => (
+var VideoList = ({videos, setSelectedVideo}) => (
   <div className="video-list">
-    {props.videos.map((video) =>
-      <VideoListEntry video={video} setVideo={props.setVideo} key={video.id.videoId}/>
+    {videos.map((video) =>
+      <VideoListEntry video={video} setSelectedVideo={(v) => setSelectedVideo(v)} key={video.id.videoId}/>
     )}
   </div>
 );
